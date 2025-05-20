@@ -40,23 +40,23 @@ pipeline {
             }
         }
 
-        stage('Deploy'){
-            steps{
-                sh """
-                    cd terraform
-                    terraform apply -auto-approve -var="app_Version=${params.appVersion}"
-                """
-            }
-        }
-
-        //  stage('Destroy'){
+        // stage('Deploy'){
         //     steps{
         //         sh """
         //             cd terraform
-        //             terraform destroy -auto-approve -var="app_Version=${params.appVersion}"
+        //             terraform apply -auto-approve -var="app_Version=${params.appVersion}"
         //         """
         //     }
         // }
+
+         stage('Destroy'){
+            steps{
+                sh """
+                    cd terraform
+                    terraform destroy -auto-approve -var="app_Version=${params.appVersion}"
+                """
+            }
+        }
     }
     post { 
         always { 
