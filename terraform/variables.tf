@@ -19,6 +19,6 @@ variable "domain_name" {
   default = "mydaws.fun"
 }
 
-variable "app_Version" {
+variable "app_version" {
   
 }
