@@ -160,7 +160,7 @@ resource "aws_autoscaling_policy" "frontend" {
 }
 
 resource "aws_alb_listener_rule" "frontend" {
-  listener_arn = data.aws_ssm_parameter.web_alb_listener_arn_https.value
+  listener_arn = data.aws_ssm_parameter.web_alb_listener_arn
   priority     = 100 # less number will be first validated
 
   action {
@@ -170,7 +170,7 @@ resource "aws_alb_listener_rule" "frontend" {
 
   condition {
     host_header {
-      values = ["web-${var.environment}.${var.zone_name}"]
+      values = ["web-${var.environment}.${var.domain_name}"]
     }
   }
 }
