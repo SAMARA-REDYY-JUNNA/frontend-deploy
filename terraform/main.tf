@@ -253,7 +253,7 @@ resource "aws_alb_target_group" "frontend" {
   health_check {
     healthy_threshold = 2
     unhealthy_threshold = 2
-    timeout = 4
+    timeout = 5
     protocol = "HTTP"
     port = 80
     path = "/"
